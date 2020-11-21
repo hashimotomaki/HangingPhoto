@@ -9,9 +9,9 @@ class PhotosController < ApplicationController
     end
 
     def index
-      @photos = Photo.all
-      @photo = Photo.new
-      @user = current_user
+      # @photos = Photo.all
+      # @photo = Photo.new
+      # @user = current_user
     end
 
     def craete

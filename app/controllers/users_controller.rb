@@ -4,14 +4,14 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @photos = current_user.photos
-    @photo = Photo.new
-    @photo_comment = PhotoComment.new
+    # @photos = current_user.photos
+    # @photo = Photo.new
+    # @photo_comment = PhotoComment.new
   end
 
   def index
     @users = User.all
-    @photo = Photo.new
+    # @photo = Photo.new
   end
 
   def edit
