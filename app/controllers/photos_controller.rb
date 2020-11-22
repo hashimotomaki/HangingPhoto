@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
     def index
       # @photos = Photo.all
       # @photo = Photo.new
-      # @user = current_user
+      @user = current_user
     end
 
     def craete

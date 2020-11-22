@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = current_user
     # @photos = current_user.photos
     # @photo = Photo.new
-    # @photo_comment = PhotoComment.new
+    @photo_comment = PhotoComment.new
   end
 
   def index
