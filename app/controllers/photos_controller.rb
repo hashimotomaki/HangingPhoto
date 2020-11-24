@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     end
 
     def index
-      @photos = Photo.all
+      @photos = Photo.all.page(params[:page]).reverse_order
       @photo = Photo.new
       @user = current_user
     end
@@ -29,16 +29,16 @@ class PhotosController < ApplicationController
     def edit
       @photo = Photo.find(params[:id])
       if @photo.user == current_user
-          render action: :edit
+          render 'edit'
       else
           redirect_to photos_path
       end
     end
 
     def update
-　  　@photo = Photo.find(params[:id])
+      @photo = Photo.find(params[:id])
         if @photo.user == current_user
-          render action: :edit
+          render 'edit'
         else
           redirect_to photos_path
         end
