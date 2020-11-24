@@ -20,7 +20,7 @@
 						  <%= @photo.user.name %>
 						  <% end %>
 					</td>
-					<td><%= link_to @photo.title, bphoto_path(@photo) %></td>
+					<td><%= link_to @photo.title, photo_path(@photo) %></td>
 					<td><%= @photo.body %></td>
 					<% if @photo.user == current_user %>
 					<td><%= link_to "Edit", edit_photo_path(@photo), class: "btn-sm btn-success edit_photo_#{@photo.id}" %></td>

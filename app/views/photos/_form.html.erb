@@ -1,14 +1,19 @@
-  <!--% if photo.errors.any? %>-->
-  <!--  <div class="alert alert-warning">-->
-  <!--    <ul>-->
-  <!--      % photo.errors.full_messages.each do |message| %>-->
-  <!--        <li>%= message + "error" %></li>-->
-  <!--      % end %>-->
-  <!--    </ul>-->
-  <!--  </div>-->
-  <!--% end %>-->
+  <% if photo.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <% photo.errors.full_messages.each do |message| %>
+          <li>%= message + "error" %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_with model:photo, local:true do |f| %>
+<%= form_with model:@photo, local:true do |f| %>
+  <div class="field row">
+		<%= f.label :投稿画像 %>
+		<%= f.attachment_field :photo_image, class: "photo_image" %>
+	</div>
+
   <div class="field row">
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: 'col-xs-12 photo_title' %>

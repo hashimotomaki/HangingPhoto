@@ -9,12 +9,12 @@ class PhotosController < ApplicationController
     end
 
     def index
-      # @photos = Photo.all
-      # @photo = Photo.new
+      @photos = Photo.all
+      @photo = Photo.new
       @user = current_user
     end
 
-    def craete
+    def create
       @photo = Photo.new(photo_params.merge(user_id: current_user.id))
       @photo.user_id = current_user.id
        if @photo.save
