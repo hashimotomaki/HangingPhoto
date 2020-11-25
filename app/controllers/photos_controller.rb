@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     end
 
     def index
-      @photos = Photo.all
+      @photos = Photo.all.includes(:user).order(created_at: :desc)
       @photo = Photo.new
       @user = current_user
     end
@@ -49,6 +49,10 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
       @photo.destroy
       redirect_to photos_path
+    end
+
+    def bookmarks
+       @photos = current_user.bookmark_phtos.includes(:user).recent
     end
 
     private

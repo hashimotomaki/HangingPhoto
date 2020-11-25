@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def index
+    if params[:name].present?
+      @users = User.where('name LIKE ?', "%#{params[:name]}%")
+    else
     @users = User.all
+    end
     @photo = Photo.new
   end
 
@@ -30,6 +34,7 @@ class UsersController < ApplicationController
   def search
     if params[:name].present?
       @users = User.where('name LIKE ?', "%#{params[:name]}%")
+      render users_path
     else
       @users = User.none
     end

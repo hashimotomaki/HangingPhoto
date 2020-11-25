@@ -4,6 +4,9 @@
 			<%= render 'users/profile', user: current_user %>
 			<h2>写真投稿</h2>
 			<%= render 'photos/form', photo: @photo %>
+			<h2>お気に入り</h2>
+			  <%= render 'photos/photos', photo: @photos %>
+			</div>
 		</div>
 
 		<div class="col-xs-9">
