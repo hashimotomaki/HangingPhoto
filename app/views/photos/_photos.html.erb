@@ -1,3 +1,5 @@
+<%# if current_user.id == photo.user_id %>
+
 <% if current_user.own_photo?(photo) %>
   <div style='display: inline; float: right;'>
     <%= link_to icon('fas', 'pen'), edit_photo_path(board), id: :"button-edit-#{photo.id}" %>

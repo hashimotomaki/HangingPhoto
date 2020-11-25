@@ -22,21 +22,24 @@ class User < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_photos, through: :bookmarks, source: :photo
+  def own_photo?(photo)
+    self.id == photo.user_id
+  end
 
-      # ユーザーをフォローする
-    def follow(user_id)
-      follower.create(followed_id: user_id)
-    end
+    # ユーザーをフォローする
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
 
-    # ユーザーのフォローを外す
-    def unfollow(user_id)
-      follower.find_by(followed_id: user_id).destroy
-    end
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
 
-    # フォローしていればtrueを返す
-    def following_by?(user)
-      following_user.include?(user)
-    end
+  # フォローしていればtrueを返す
+  def following_by?(user)
+    following_user.include?(user)
+  end
 
   validates :name, presence: true
   validates :email, presence: true

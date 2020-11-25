@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
       @photos = Photo.all.includes(:user).order(created_at: :desc)
       @photo = Photo.new
       @user = current_user
+      @all_ranks = Photo.find(favorite.group(:photo_id).order('count(photo_id) desc').limit(3).pluck(:photo_id))
     end
 
     def create
