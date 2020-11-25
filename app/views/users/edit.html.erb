@@ -4,15 +4,14 @@
 
 	<!-- エラーメッセージ表示-->
 	<% if @user.errors.any? %>
-		<div id="error_explanation">
-			<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
-			<ul>
-				<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+    <div class="alert alert-warning">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 	<!-- エラーメッセージ表示-->
 
 	<div class="field">

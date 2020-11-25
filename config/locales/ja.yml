@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      photo:
+        image_id: 画像
+        title: タイトル
+        body: 内容
+
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        introduction: 自己紹介文
+        profile_image_id: プロフィール画像
+        password: パスワード
+        email: メールアドレス
+

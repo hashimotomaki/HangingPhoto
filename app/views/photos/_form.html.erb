@@ -2,7 +2,7 @@
     <div class="alert alert-warning">
       <ul>
         <% photo.errors.full_messages.each do |message| %>
-          <li>%= message + "error" %></li>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -11,7 +11,7 @@
 <%= form_with model:@photo, local:true do |f| %>
   <div class="field row">
 		<%= f.label :投稿画像 %>
-		<%= f.attachment_field :photo_image, class: "photo_image" %>
+		<%= f.attachment_field :image, class: "photo_image" %>
 	</div>
 
   <div class="field row">

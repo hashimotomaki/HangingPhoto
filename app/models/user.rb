@@ -34,6 +34,7 @@ class User < ApplicationRecord
       following_user.include?(user)
     end
 
-  # validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true
   validates :introduction, length: {maximum: 100 }
 end

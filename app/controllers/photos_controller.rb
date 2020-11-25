@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     end
 
     def index
-      @photos = Photo.all.page(params[:page]).reverse_order
+      @photos = Photo.all
       @photo = Photo.new
       @user = current_user
     end
@@ -38,9 +38,10 @@ class PhotosController < ApplicationController
     def update
       @photo = Photo.find(params[:id])
         if @photo.user == current_user
-          render 'edit'
+           @photo.update(photo_params)
+            redirect_to photos_path, notice: "You have updated book successfully."
         else
-          redirect_to photos_path
+          render 'edit'
         end
     end
 
@@ -52,7 +53,7 @@ class PhotosController < ApplicationController
 
     private
     def photo_params
-      params.require(:photo).permit(:title, :body)
+      params.require(:photo).permit(:title, :body, :image)
     end
 
     def ensure_correct_user

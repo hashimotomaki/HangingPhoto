@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about' , as: 'about'
   devise_for :users
-  resources :users
+  resources :users do
+  post :search, on: :collection
+  end
   resources :photos
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す

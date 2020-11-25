@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).reverse_order
+    @users = User.all
     @photo = Photo.new
   end
 
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
        redirect_to user_path(@user), notice: "You have updated user successfully."
     else
       render "edit"
+    end
+  end
+
+  def search
+    if params[:name].present?
+      @users = User.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @users = User.none
     end
   end
 
