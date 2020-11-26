@@ -13,7 +13,7 @@
 
 	<tr>
 		<th>フォロー中</th>
-		<th><%= link_to "#{user.follower.count}", follows_path(user), class: "nav-link" %></th>
+		<th><%= link_to "#{user.following.count}", follows_path(user), class: "nav-link" %></th>
 	</tr>
   <tr>
   	<th>フォロワー</th>

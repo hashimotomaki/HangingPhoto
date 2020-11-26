@@ -1,12 +1,12 @@
-<%# if current_user.id == photo.user_id %>
-
-<% if current_user.own_photo?(photo) %>
-  <div style='display: inline; float: right;'>
-    <%= link_to icon('fas', 'pen'), edit_photo_path(board), id: :"button-edit-#{photo.id}" %>
-    <%= link_to icon('fas', 'trash-alt'), photo_path(board), id: :"button-delete-#{photo.id}",method: :delete, data: { confirm: '削除してよろしいですか？' } %>
-  </div>
-<% else %>
-  <div style='display: inline; float: right;'>
-     <%= render 'photos/bookmark_area', photo: photo %>
-  </div>
+<% photos.each do |photo| %>
+  <% if current_user.own_photo?(photo) %>
+    <div style='display: inline; float: right;'>
+      <%= link_to edit_photo_path(photo), id: :"button-edit-#{photo.id}" %>
+      <%= link_to photo_path(photo), id: :"button-delete-#{photo.id}",method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+    </div>
+  <% else %>
+    <div style='display: inline; float: right;'>
+       <%= render 'photos/bookmark_area', photo: photo %>
+    </div>
+  <% end %>
 <% end %>

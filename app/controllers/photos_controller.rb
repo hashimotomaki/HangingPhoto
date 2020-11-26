@@ -10,9 +10,10 @@ class PhotosController < ApplicationController
 
     def index
       @photos = Photo.all.includes(:user).order(created_at: :desc)
+      # @like_photos = current_user.bookmark_photos
       @photo = Photo.new
       @user = current_user
-      @all_ranks = Photo.find(favorite.group(:photo_id).order('count(photo_id) desc').limit(3).pluck(:photo_id))
+      @all_ranks = Photo.create_all_ranks
     end
 
     def create
@@ -52,9 +53,9 @@ class PhotosController < ApplicationController
       redirect_to photos_path
     end
 
-    def bookmarks
-       @photos = current_user.bookmark_phtos.includes(:user).recent
-    end
+    # def bookmarks
+    #   @photos = current_user.bookmark_photos.includes(:user)
+    # end
 
     private
     def photo_params

@@ -1,12 +1,12 @@
 	<div class="row">
 		<div class="col-xs-3">
 			<h2>ユーザー情報</h2>
-			<%= render 'users/profile', user: current_user %>
+			  <%= render 'users/profile', user: current_user %>
 			<h2>写真投稿</h2>
-			<%= render 'photos/form', photo: @photo %>
-			<h2>お気に入り</h2>
-			  <%= render 'photos/photos', photo: @photos %>
-			</div>
+		 	  <%= render 'photos/form', photo: @photo %>
+			<!--<h2>お気に入り</h2>-->
+			<!--  <%#= render 'photos/photos', photos: @like_photos %>-->
+			<!--</div>-->
 		</div>
 
 		<div class="col-xs-9">
@@ -27,8 +27,8 @@
 						  <% end %>
 						</td>
 					</tr>
+					<% end %>
 				</tbody>
-				<% end %>
 			</table>
 
 			<h2>写真一覧</h2>
@@ -54,9 +54,8 @@
 						</td>
 						<td><%= link_to photo.title, photo_path(photo), class: "photo_#{photo.id}" %></td>
 						<td><%= photo.body %></td>
-
 						<td><% if photo.favorited_by?(current_user) %>
-					         <%= link_to photo_favorite_path(photo), method: :delete do %>
+					         <%= link_to photo_favorite_path(photo,photo.own_favorited(current_user)), method: :delete do %>
 	                         <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
 	                         <%= photo.favorites.count %> いいね
 			                <% end %>
@@ -65,9 +64,18 @@
 			                  <i class="fa fa-heart-o" aria-hidden="true"></i>
 			                  <%= photo.favorites.count %> いいね
 			               <% end %>
-	              <% end %>
-	          </td>
+		              <% end %>
+		          </td>
 						<td>コメント数:<%= photo.photo_comments.count %></td>
+						<td>
+							  <% if @user != current_user %>
+							    <% if current_user.following_by?(@user) %>
+						        <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+						      <% else %>
+						        <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+						      <% end %>
+						    <% end %>
+					  </td>
 					</tr>
 					<% end %>
 				</tbody>
