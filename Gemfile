@@ -69,3 +69,7 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'order_as_specified'
 gem 'rails-i18n'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
