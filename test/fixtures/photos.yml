@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  username: 
+  $: MyString
+  rails: MyString
+  g: MyString
+  model: MyString
+  PostImage: MyString
+  shop_name: MyText
+  image_id: MyString
+  caption: MyText
+  user_id: 1
+
+two:
+  title: MyText
+  username: 
+  $: MyString
+  rails: MyString
+  g: MyString
+  model: MyString
+  PostImage: MyString
+  shop_name: MyText
+  image_id: MyString
+  caption: MyText
+  user_id: 1

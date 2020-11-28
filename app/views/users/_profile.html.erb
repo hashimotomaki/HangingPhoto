@@ -1,0 +1,25 @@
+<table class="table">
+	<tr><%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "img-circle pull-left profile-thumb",fallback: "no_image.jpg" %></tr>
+
+	<tr>
+		<th>名前</th>
+		<th><%= user.name %></th>
+	</tr>
+
+	<tr>
+		<th>自己紹介</th>
+		<th><%= user.introduction %></th>
+	</tr>
+
+	<tr>
+		<th>フォロー中</th>
+		<th><%= link_to "#{user.following_user.count}", follows_path(user), class: "nav-link" %></th>
+	</tr>
+  <tr>
+  	<th>フォロワー</th>
+  	<th><%= link_to "#{user.followed_user.count}", followers_path(user), class: "nav-link" %></th>
+</table>
+
+<div class="row">
+	<%= link_to "編集", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+</div>
