@@ -10,7 +10,6 @@ class PhotosController < ApplicationController
 
     def index
       @photos = Photo.all.includes(:user).order(created_at: :desc)
-      # @like_photos = current_user.bookmark_photos
       @photo = Photo.new
       @user = current_user
       @all_ranks = Photo.create_all_ranks

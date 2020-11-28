@@ -16,8 +16,8 @@ class User < ApplicationRecord
 
   has_many :following, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy # 自分がフォローしているユーザー取得
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォローされているユーザー取得
-  has_many :following_user, through: :following, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :followed # 自分をフォローしている人
+  has_many :following_user, through: :followed, source: :following # 自分がフォローしている人
+  has_many :followed_user, through: :following, source: :followed # 自分をフォローしている人
 
   has_many :photos, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   # フォローしていればtrueを返す
   def following_by?(user)
-    following_user.include?(user)
+    following_user.find_by(id: user.id).present?
   end
 
   validates :name, presence: true

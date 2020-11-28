@@ -24,6 +24,15 @@
 					<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 					<td><%= user.name %></td>
 					<td><%= link_to "詳細", user_path(user), class: "user_#{user.id}" %></td>
+					<td>
+							  <% if user != current_user %>
+							    <% if current_user.following_by?(user) %>
+						        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+						      <% else %>
+						        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+						      <% end %>
+						    <% end %>
+					  </td>
 					<% end %>
 				</tr>
 			</tbody>

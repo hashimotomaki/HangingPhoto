@@ -67,15 +67,6 @@
 		              <% end %>
 		          </td>
 						<td>コメント数:<%= photo.photo_comments.count %></td>
-						<td>
-							  <% if @user != current_user %>
-							    <% if current_user.following_by?(@user) %>
-						        <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
-						      <% else %>
-						        <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
-						      <% end %>
-						    <% end %>
-					  </td>
 					</tr>
 					<% end %>
 				</tbody>
