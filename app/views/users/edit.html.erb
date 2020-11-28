@@ -21,6 +21,7 @@
 
 	<div class="field">
 		<%= f.label :プロフィール画像 %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
 		<%= f.attachment_field :profile_image, class: "user_image" %>
 	</div>
 

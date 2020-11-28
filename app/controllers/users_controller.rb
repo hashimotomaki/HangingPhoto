@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def show
-    @user = current_user
-    @photos = current_user.photos
+    @user = User.find(params[:id])
+    @photos = @user.photos
     @photo = Photo.new
     @photo_comment = PhotoComment.new
   end
