@@ -64,7 +64,12 @@ gem 'devise'
 gem 'pry-byebug'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'kaminari'
+gem 'jquery-rails'
+gem 'kaminari','~> 1.2.1'
 gem 'order_as_specified'
+gem 'rails-i18n'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
