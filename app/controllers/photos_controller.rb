@@ -19,6 +19,10 @@ class PhotosController < ApplicationController
       @photo = Photo.new(photo_params.merge(user_id: current_user.id))
       @photo.user_id = current_user.id
        if @photo.save
+           tags = Vision.get_image_data(@photo.image)
+           tags.each do |tag|
+           photo.tags.create(name: tag)
+           end
           redirect_to photo_path(@photo), notice: "You have created book successfully."
        else
           @photos = Photo.all
