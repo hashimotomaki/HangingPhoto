@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
        if @photo.save
            tags = Vision.get_image_data(@photo.image)
            tags.each do |tag|
-           photo.tags.create(name: tag)
+           @photo.tags.create(name: tag)
            end
           redirect_to photo_path(@photo), notice: "You have created book successfully."
        else

@@ -32,7 +32,8 @@ module Vision
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
-
+      pp api_url
+      pp response
       # APIレスポンス出力
       JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
     end
