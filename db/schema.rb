@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_123051) do
+ActiveRecord::Schema.define(version: 2020_12_07_103851) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2020_11_26_123051) do
     t.index ["followed_id", "following_id"], name: "index_relationships_on_followed_id_and_following_id", unique: true
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
