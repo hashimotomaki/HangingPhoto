@@ -1,5 +1,6 @@
   <% if photo.errors.any? %>
     <div class="alert alert-warning">
+      <h3><%= photo.errors.count %>error prohibited this obj from being saved:</h3>
       <ul>
         <% photo.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -7,24 +8,24 @@
       </ul>
     </div>
   <% end %>
-
-<%= form_with model:@photo, local:true do |f| %>
-  <div class="field row">
-		<%= f.label :投稿画像 %>
-		<%= f.attachment_field :image, class: "photo_image" %>
-	</div>
-
-  <div class="field row">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title, class: 'col-xs-12 photo_title' %>
-  </div>
-
-  <div class="field row">
-    <%= f.label :内容 %>
-    <%= f.text_area :body, class: 'col-xs-12 photo_body' %>
-  </div>
-
-  <div class="actions row">
-    <%= f.submit "投稿",class: 'btn btn-primary col-xs-12' %>
-  </div>
-<% end %>
+  
+  <%= form_with model:@photo, local:true do |f| %>
+    <div class="field row">
+  		<%= f.label :投稿画像 %>
+  		<%= f.attachment_field :image, class: "photo_image" %>
+  	</div>
+  
+    <div class="field row">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title, class: 'col-xs-12 photo_title' %>
+    </div>
+  
+    <div class="field row">
+      <%= f.label :内容 %>
+      <%= f.text_area :body, class: 'col-xs-12 photo_body' %>
+    </div>
+  
+    <div class="actions row">
+      <%= f.submit "投稿",class: 'btn btn-primary col-xs-12' %>
+    </div>
+  <% end %>
