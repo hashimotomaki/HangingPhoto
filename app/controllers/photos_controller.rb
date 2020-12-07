@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
        else
           @photos = Photo.all
           @user = current_user
+          @all_ranks = Photo.create_all_ranks
           render 'index'
        end
     end
